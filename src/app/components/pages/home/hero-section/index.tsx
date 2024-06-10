@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/button";
-import { TechBadge } from "@/components/tech-badge";
+import { Button } from "@/app/components/button";
+import { TechBadge } from "@/app/components/tech-badge";
 import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
