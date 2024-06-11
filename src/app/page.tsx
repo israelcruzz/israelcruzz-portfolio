@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { HeroSection } from "./components/pages/home/hero-section";
 import { TechCardsSection } from "./components/pages/home/tech-cards-section";
 import { ProjectsCardSection } from "./components/pages/home/projects-card-section";
