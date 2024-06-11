@@ -1,9 +1,30 @@
+"use client";
+
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { Button } from "../button";
-import { Input } from "../input";
 import { IntroSection } from "../intro-section";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 export const ContactSection = () => {
+  const formSchema = z.object({
+    name: z.string().min(5),
+    email: z.string().email(),
+    message: z.string().min(5),
+  });
+
+  type formType = z.infer<typeof formSchema>;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<formType>();
+
+  const handleSubmitForm = (data: formType) => {
+    alert(data.name);
+  };
+
   return (
     <main
       id="contact"
@@ -16,20 +37,45 @@ export const ContactSection = () => {
         <span>Entre em contato</span>
       </div>
 
-      <form className="w-full flex flex-col">
+      <form
+        className="w-full flex flex-col"
+        onSubmit={handleSubmit(handleSubmitForm)}
+      >
         <div className="w-full flex flex-col gap-4">
-          <Input type="text" placeholder="Digite seu nome..." />
-          <Input type="text" placeholder="Digite seu e-mail..." />
+          <input
+            {...register("name", { min: 5 })}
+            type="text"
+            placeholder="Digite seu nome..."
+            className="w-full p-4 bg-gray-800 text-base font-normal leading-6 text-gray-400 rounded-lg"
+          />
+
+          {errors.name && (
+            <span className="text-red-700">Este campo não pode ser vazio</span>
+          )}
+
+          <input
+            {...register("email", { min: 5 })}
+            type="text"
+            placeholder="Digite seu e-mail..."
+            className="w-full p-4 bg-gray-800 text-base font-normal leading-6 text-gray-400 rounded-lg"
+          />
+
+          {errors.email && (
+            <span className="text-red-700">Este campo não pode ser vazio</span>
+          )}
 
           <textarea
-            name=""
-            id=""
+            {...register("message", { min: 5 })}
             placeholder="Digite sua mensagem..."
             className="w-full p-4 bg-gray-800 text-base font-normal leading-6 text-gray-400 rounded-lg mb-4"
           />
+
+          {errors.message && (
+            <span className="text-red-700">Este campo não pode ser vazio</span>
+          )}
         </div>
 
-        <Button>
+        <Button type="submit">
           <h1>Entre em contato</h1>
           <HiArrowNarrowRight size={24} color="#FFFFFF" />
         </Button>
