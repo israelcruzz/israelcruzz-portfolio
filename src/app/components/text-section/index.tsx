@@ -16,7 +16,10 @@ export const TextSection = ({ title, heading }: TextSectionProps) => {
         </h1>
       </div>
 
-      <Divider />
+      <div className="mt-6 mb-12">
+        <Divider />
+      </div>
+      
     </section>
   );
 };
