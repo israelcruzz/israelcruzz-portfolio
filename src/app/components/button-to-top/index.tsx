@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
 
 export const ButtonToTop = () => {
-  const [viewButton, setViewButton] = useState<boolean>();
+  const [viewButton, setViewButton] = useState<boolean>(true);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.screenY > 500) {
+      if (window.screenY > 100) {
         setViewButton(true);
       } else {
         setViewButton(false);
@@ -17,7 +17,7 @@ export const ButtonToTop = () => {
   }, []);
 
   const handleClickScrollToTop = () => {
-    return window.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
@@ -28,7 +28,7 @@ export const ButtonToTop = () => {
       {viewButton && (
         <button
           onClick={() => handleClickScrollToTop}
-          className="flex items-center justify-center bg-emerald-500 p-6 rounded-lg"
+          className="flex items-center justify-center bg-emerald-500 hover:bg-emerald-800 p-2 rounded-lg"
         >
           <MdOutlineKeyboardDoubleArrowUp size={24} color="#FFFFFF" />
         </button>
