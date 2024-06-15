@@ -25,7 +25,7 @@ const CONTACTS = [
 
 export const HeroSection = () => {
   const handleClickContactMe = () => {
-    const sectionContact = document.querySelector("#contact");
+    const sectionContact = document.getElementById("contact");
 
     if (sectionContact) {
       sectionContact.scrollIntoView({ behavior: "smooth" });
@@ -52,7 +52,7 @@ export const HeroSection = () => {
         </div>
 
         <div className="flex gap-4 items-center mt-4">
-          <Button onClick={() => handleClickContactMe}>
+          <Button onClick={handleClickContactMe}>
             <h1>Entre em contato</h1>
             <HiArrowNarrowRight size={24} color="#FFFFFF" />
           </Button>

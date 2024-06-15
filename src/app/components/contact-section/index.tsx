@@ -28,7 +28,7 @@ export const ContactSection = () => {
   return (
     <main
       id="contact"
-      className="bg-gray-800/40 px-[510px] py-[128px] flex flex-col justify-center items-center w-full"
+      className="bg-gray-800/40 xl:px-[510px] xl:py-[128px] p-6 flex flex-col justify-center items-center w-full"
     >
       <IntroSection title="contato" />
 
