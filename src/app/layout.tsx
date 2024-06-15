@@ -28,7 +28,7 @@ export default function RootLayout({
           sizes="<generated>"
         />
       </head>
-      <body className={`${inter.className} bg-black relative`}>
+      <body className={`${inter.className} bg-gray-950 relative`}>
         <Header />
         {children}
         <Footer />

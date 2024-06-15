@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const ProjectCard = () => {
   return (
-    <main className="w-full h-[436px] bg-gray-800 opacity-70 hover:opacity-100 rounded-lg flex flex-col overflow-hidden transition-all group">
+    <Link href="/" className="w-full h-[416px] bg-gray-800 opacity-70 hover:opacity-100 rounded-lg flex flex-col overflow-hidden transition-all group">
       <div className="w-full h-[192px]">
         <Image
           src="/images/example-project.png"
@@ -21,7 +22,7 @@ export const ProjectCard = () => {
           </h3>
           <p className="text-base font-normal text-gray-400 leading-6">
             BookWise é uma plataforma de avaliação de livros que foi
-            desenvolvida durante o bootcamp Ignite da Rocketseat. Com apenas um
+            desenvolvida durante o bootcamp Ignite da Rocketseat.
           </p>
         </div>
 
@@ -29,6 +30,6 @@ export const ProjectCard = () => {
           NextJs, ReactJs, NodeJs
         </span>
       </div>
-    </main>
+    </Link>
   );
 };

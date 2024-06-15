@@ -20,7 +20,7 @@ export const HeroSection = () => {
 
       <TextLink uri="/">
         <IoIosArrowRoundBack size={24} />
-        <span>Voltar para a home</span>
+        <span>Voltar para a Home</span>
       </TextLink>
     </ProjectSection>
   );
