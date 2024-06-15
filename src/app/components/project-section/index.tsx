@@ -6,7 +6,7 @@ interface ProjectSectionProps {
 
 export const ProjectSection = ({ children }: ProjectSectionProps) => {
   return (
-    <main className="flex flex-col items-center justify-center gap-12 p-6 text-center md:px-[360px] md:py-[128px]">
+    <main className="flex flex-col items-center justify-center gap-12 px-6 py-36 text-center md:px-[360px] md:py-[146px]">
       {children}
     </main>
   );
