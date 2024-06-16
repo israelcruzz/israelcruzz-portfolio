@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/app/components/header";
-import { ContactSection } from "./components/contact-section";
+import { Toaster } from "sonner";
 import { Footer } from "./components/footer";
 import { ButtonToTop } from "./components/button-to-top";
 
@@ -41,6 +41,8 @@ export default function RootLayout({
         <div className="fixed bottom-0 right-0 m-6">
           <ButtonToTop />
         </div>
+
+        <Toaster theme="dark" />
       </body>
     </html>
   );
