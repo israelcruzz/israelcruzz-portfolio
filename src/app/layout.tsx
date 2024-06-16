@@ -29,14 +29,16 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-gray-950 relative`}>
-        <Header />
+        <div className="absolute w-full z-40">
+          <Header />
+        </div>
+
         {children}
         <Footer />
 
         <div className="fixed bottom-0 right-0 m-6">
           <ButtonToTop />
         </div>
-        
       </body>
     </html>
   );

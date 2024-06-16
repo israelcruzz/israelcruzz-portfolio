@@ -33,7 +33,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <main className="grid grid-cols-1 py-6 gap-6 md:grid-cols-2 items-center md:gap-[130px] md:py-12">
+    <main className="grid grid-cols-1 mt-24 py-6 gap-6 md:grid-cols-2 items-center md:gap-[130px] md:py-12">
       <section>
         <span className="text-emerald-400 text-base font-normal mb-2">Desenvolvedor Fullstack</span>
         <h1 className="font-medium text-4xl text-gray-300">Israel Cruz</h1>

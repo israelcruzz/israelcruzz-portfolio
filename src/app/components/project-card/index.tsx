@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const ProjectCard = () => {
   return (
-    <Link href="/" className="w-full h-[416px] bg-gray-800 opacity-70 hover:opacity-100 rounded-lg flex flex-col overflow-hidden transition-all group">
+    <Link href="/projects/a" className="w-full h-[416px] bg-gray-800 opacity-70 hover:opacity-100 rounded-lg flex flex-col overflow-hidden transition-all group hover:outline hover:outline-emerald-500">
       <div className="w-full h-[192px]">
         <Image
           src="/images/example-project.png"

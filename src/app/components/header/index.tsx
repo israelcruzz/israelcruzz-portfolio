@@ -25,7 +25,7 @@ export const Header = () => {
           <h1
             className={`${
               path === "/" ? "text-white" : "text-gray-400"
-            } font-medium text-base`}
+            } font-medium text-base hover:text-white`}
           >
             Home
           </h1>
@@ -36,7 +36,7 @@ export const Header = () => {
           <h1
             className={`${
               path === "/projects" ? "text-white" : "text-gray-400"
-            } font-medium text-base`}
+            } font-medium text-base hover:text-white`}
           >
             Projetos
           </h1>
