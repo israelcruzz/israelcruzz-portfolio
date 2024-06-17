@@ -11,35 +11,37 @@ datasource db {
 }
 
 model Tech {
-  id       String    @id @default(uuid())
-  name     String
-  icon     String
-  exp      Int
+  id   String @id @default(uuid())
+  name String
+  icon String
+  exp  Int
+
   projects Project[]
 
   @@map("techs")
 }
 
 model Project {
-  id               String @id @default(uuid())
-  title            String
-  description      String
-  repoUri          String
-  deployUri        String
-  thumbUri         String
-  projectSectionId String
-  techs            Tech[]
+  id          String @id @default(uuid())
+  title       String
+  description String
+  repoUri     String
+  deployUri   String
+  thumbUri    String
 
-  projectSection ProjectSection @relation(fields: [projectSectionId], references: [id])
+  projectSection ProjectSection[]
+  techs          Tech[]
 
   @@map("projects")
 }
 
 model ProjectSection {
-  id       String    @id @default(uuid())
-  name     String
-  imageUri String
-  project  Project[]
+  id        String @id @default(uuid())
+  name      String
+  imageUri  String
+  projectId String
+
+  project Project @relation(fields: [projectId], references: [id])
 
   @@map("projects_sections")
 }
