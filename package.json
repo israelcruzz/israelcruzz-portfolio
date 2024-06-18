@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "npx tsx ./prisma/seed/index.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.15.0",
@@ -18,6 +19,7 @@
     "react-hook-form": "^7.51.5",
     "react-icons": "^5.2.1",
     "sonner": "^1.5.0",
+    "tsx": "^4.15.6",
     "zod": "^3.23.8"
   },
   "devDependencies": {
