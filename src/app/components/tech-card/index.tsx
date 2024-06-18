@@ -19,7 +19,7 @@ export const TechCard = ({
         <TechIcon size={24} />
       </div>
 
-      <span>{years} anos de experiência</span>
+      <span>{years} { years === 1 ? "ano" : "anos" } de experiência</span>
     </main>
   );
 };
