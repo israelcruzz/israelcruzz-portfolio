@@ -5,6 +5,11 @@ import { TechBadge } from "@/app/components/tech-badge";
 import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
+import { ITech } from "../../../../../../prisma/seed";
+
+interface HeroSectionProps {
+  techs: ITech[];
+}
 
 const CONTACTS = [
   {
@@ -23,7 +28,7 @@ const CONTACTS = [
   },
 ];
 
-export const HeroSection = () => {
+export const HeroSection = ({ techs }: HeroSectionProps) => {
   const handleClickContactMe = () => {
     const sectionContact = document.getElementById("contact");
 
@@ -35,7 +40,9 @@ export const HeroSection = () => {
   return (
     <main className="grid grid-cols-1 mt-24 py-6 gap-6 md:grid-cols-2 items-center md:gap-[130px] md:py-12">
       <section>
-        <span className="text-emerald-400 text-base font-normal mb-2">Desenvolvedor Fullstack</span>
+        <span className="text-emerald-400 text-base font-normal mb-2">
+          Desenvolvedor Fullstack
+        </span>
         <h1 className="font-medium text-4xl text-gray-300">Israel Cruz</h1>
 
         <p className="font-normal text-base leading-6 text-gray-400 mt-4">
@@ -46,8 +53,8 @@ export const HeroSection = () => {
         </p>
 
         <div className="flex gap-2 flex-wrap w-[324px] mt-4">
-          {Array.from({ length: 7 }).map((_, index) => {
-            return <TechBadge name="Next" key={index} />;
+          {techs.map((tech, index) => {
+            return <TechBadge name={tech.name} key={index} />;
           })}
         </div>
 
@@ -59,7 +66,12 @@ export const HeroSection = () => {
 
           {CONTACTS.map((contact, index) => {
             return (
-              <a href={contact.link} key={index} title={contact.name} target="_blank">
+              <a
+                href={contact.link}
+                key={index}
+                title={contact.name}
+                target="_blank"
+              >
                 {contact.imageComponent}
               </a>
             );
