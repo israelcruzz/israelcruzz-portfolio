@@ -11,7 +11,7 @@ export async function GET() {
       },
     },
     include: {
-      techs: true,
+      techs: { select: { name: true } },
     },
   });
 
