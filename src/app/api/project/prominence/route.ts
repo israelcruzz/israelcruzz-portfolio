@@ -15,9 +15,9 @@ export async function GET() {
     },
   });
 
-  if (projects.length === 0) {
-    NextResponse.json({ message: "Project Not Found" }), { status: 500 };
+  if (!projects.length) {
+    return NextResponse.json({ message: "Project Not Found" }), { status: 500 };
   }
 
-  NextResponse.json(projects);
+  return NextResponse.json(projects);
 }
