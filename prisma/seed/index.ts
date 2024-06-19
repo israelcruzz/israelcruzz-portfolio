@@ -27,33 +27,39 @@ export interface IProjectSection {
 }
 
 async function seed() {
+  await db.projectSection.deleteMany();
+  await db.project.deleteMany();
+  await db.tech.deleteMany();
+
   const technologies: ITech[] = [
     { name: "Html", icon: "", exp: 3 },
     { name: "Css", icon: "", exp: 3 },
-    { name: "Tailwind", icon: "", exp: 3 }, 
+    { name: "Tailwind", icon: "", exp: 3 }, //10
+    { name: "Bootstrap", icon: "", exp: 3 },
     { name: "Javascript", icon: "", exp: 3 },
-    { name: "Typescript", icon: "", exp: 1 }, 
+    { name: "Typescript", icon: "", exp: 1 }, //1
     { name: "ReactJs", icon: "", exp: 3 },
-    { name: "NextJs", icon: "", exp: 1 }, 
-    { name: "ReactNative", icon: "", exp: 1 }, 
-    { name: "Expo", icon: "", exp: 1 }, 
-    { name: "NodeJs", icon: "", exp: 1 }, 
+    { name: "NextJs", icon: "", exp: 1 }, //2
+    { name: "ReactNative", icon: "", exp: 1 }, //3
+    { name: "Expo", icon: "", exp: 1 }, //4
+    { name: "NodeJs", icon: "", exp: 1 }, //5
     { name: "Bun", icon: "", exp: 1 },
     { name: "Express", icon: "", exp: 1 },
-    { name: "Fastify", icon: "", exp: 1 }, 
+    { name: "Fastify", icon: "", exp: 1 }, //6
     { name: "NestJs", icon: "", exp: 1 },
     { name: "Elysia ", icon: "", exp: 1 },
-    { name: "Prisma", icon: "", exp: 1 },
+    { name: "Prisma", icon: "", exp: 1 }, //7
     { name: "MongoDB", icon: "", exp: 1 },
-    { name: "Sql", icon: "", exp: 3 }, 
+    { name: "Sql", icon: "", exp: 3 }, //8
     { name: "Docker", icon: "", exp: 1 },
-    { name: "Vitest", icon: "", exp: 1 }, 
+    { name: "Vitest", icon: "", exp: 1 }, //9
     { name: "Jest", icon: "", exp: 1 },
-    { name: "Figma", icon: "", exp: 3 }, 
+    { name: "Kafka", icon: "", exp: 1 },
+    { name: "Figma", icon: "", exp: 3 }, //11
+    { name: "Git", icon: "", exp: 3 },
+    { name: "GitHub", icon: "", exp: 3 },
     { name: "Php", icon: "", exp: 3 },
   ];
-
-  await db.tech.deleteMany();
 
   const technologiesCreated: ITech[] = [];
   for (let tech of technologies) {
@@ -73,7 +79,7 @@ async function seed() {
       repoUri: "https://github.com/israelcruzz/DuoFinders",
       deployUri: "https://my-awesome-project.com",
       thumbUri:
-        "https://github.com/israelcruzz/DuoFinders/blob/main/%40duofinders-thumb.png",
+        "https://github.com/israelcruzz/DuoFinders/blob/main/@duofinders-thumb.png?raw=true",
       techs: {
         connect: [
           { id: technologiesCreated[5].id },
@@ -97,7 +103,7 @@ async function seed() {
       repoUri: "https://github.com/israelcruzz/duoFindersNotesWeb",
       deployUri: "https://my-awesome-project.com",
       thumbUri:
-        "https://github.com/israelcruzz/duoFindersNotesWeb/blob/main/src/assets/SignIn.png",
+        "https://github.com/israelcruzz/duoFindersNotesWeb/blob/main/src/assets/SignIn.png?raw=true",
       techs: {
         connect: [
           { id: technologiesCreated[0].id },
@@ -120,7 +126,7 @@ async function seed() {
       repoUri: "https://github.com/israelcruzz/ai-train-app",
       deployUri: "https://my-awesome-project.com",
       thumbUri:
-        "https://github.com/israelcruzz/ai-train-app/blob/main/assets/thumb.png",
+        "https://github.com/israelcruzz/ai-train-app/blob/main/assets/thumb.png?raw=true",
       techs: {
         connect: [
           { id: technologiesCreated[8].id },
@@ -172,7 +178,7 @@ async function seed() {
       repoUri: "https://github.com/israelcruzz/tech-blog",
       deployUri: "https://my-awesome-project.com",
       thumbUri:
-        "https://github.com/israelcruzz/tech-blog/blob/main/assets/images/create.png",
+        "https://github.com/israelcruzz/tech-blog/blob/main/assets/images/create.png?raw=true",
       techs: {
         connect: [
           { id: technologiesCreated[0].id },
@@ -183,9 +189,6 @@ async function seed() {
       },
     },
   ];
-
-  await db.projectSection.deleteMany();
-  await db.project.deleteMany();
 
   const projectsCreated: IProject[] = [];
   for (let project of projects) {
@@ -473,7 +476,7 @@ async function seed() {
       data: proj,
     });
 
-    console.log(`Proejct Section ${projCreated.name} Created`);
+    console.log(`Project Section ${projCreated.name} Created`);
   }
 
   for (let proj of rocketNotesSections) {
@@ -481,7 +484,7 @@ async function seed() {
       data: proj,
     });
 
-    console.log(`Proejct Section ${projCreated.name} Created`);
+    console.log(`Project Section ${projCreated.name} Created`);
   }
 
   for (let proj of aiTrainSections) {
@@ -489,7 +492,7 @@ async function seed() {
       data: proj,
     });
 
-    console.log(`Proejct Section ${projCreated.name} Created`);
+    console.log(`Project Section ${projCreated.name} Created`);
   }
 
   for (let proj of devStoreSections) {
@@ -497,7 +500,7 @@ async function seed() {
       data: proj,
     });
 
-    console.log(`Proejct Section ${projCreated.name} Created`);
+    console.log(`Project Section ${projCreated.name} Created`);
   }
 
   for (let proj of teacherAccessSections) {

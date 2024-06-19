@@ -2,26 +2,34 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "../../../../../prisma/seed";
 
 export async function GET(req: NextRequest, res: NextResponse) {
-  const techNamesSearch = [
-    "Javascript",
-    "Typescript",
-    "ReactJs",
-    "NextJs",
-    "NodeJs",
-    "ReactNative",
-  ];
+  try {
+    const techNamesSearch = [
+      "Javascript",
+      "Typescript",
+      "ReactJs",
+      "NextJs",
+      "NodeJs",
+      "ReactNative",
+    ];
 
-  const techs = await db.tech.findMany({
-    where: {
-      name: {
-        in: techNamesSearch,
+    const techs = await db.tech.findMany({
+      where: {
+        name: {
+          in: techNamesSearch,
+        },
       },
-    },
-  });
+    });
 
-  if (techs.length === 0) {
-    NextResponse.json({ message: "Techs Not Found" }), { status: 500 };
+    if (!techs) {
+      return NextResponse.json({ message: "Techs Not Found" }, { status: 404 });
+    }
+
+    return NextResponse.json(techs, { status: 200 });
+  } catch (error) {
+    console.error("Error fetching Techs:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
   }
-
-  NextResponse.json(techs);
 }

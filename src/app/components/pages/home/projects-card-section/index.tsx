@@ -4,20 +4,26 @@ import { TextLink } from "@/app/components/text-link";
 import { TextSection } from "@/app/components/text-section";
 import React from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { IProject } from "../../../../../../prisma/seed";
 
-export const ProjectsCardSection = () => {
+interface ProjectsCardSectionProps {
+  projects: IProject[];
+}
+
+export const ProjectsCardSection = ({ projects }: ProjectsCardSectionProps) => {
+  
   return (
     <div>
       <TextSection title="destaques" heading="Projetos em destaque" />
       <div className="flex flex-col">
-        {Array.from({ length: 2 }).map((_, i) => (
+        {projects.map((proj, i) => (
           <React.Fragment key={i}>
             <ProjectCardSection
-              title="BookWise"
-              description="BookWise é uma plataforma de avaliação de livros que foi desenvolvida durante o bootcamp Ignite da Rocketseat. Com apenas um Figma precisavamos desenvolver essa aplicação completa Full Stack com Next.js."
-              imageUri="/images/example-project.png"
-              techs={["Next", "Prisma", "Typescript", "React", "Tailwindcss"]}
-              uri="/projects"
+              title={proj.title}
+              description={proj.description}
+              imageUri={proj.thumbUri}
+              techs={proj.techs && proj.techs.map((proj) => proj.name)}
+              uri={`/projects/${proj.title}`}
             />
             <div className="mt-6 mb-6 md:mt-12 md:mb-12">
               <Divider />
@@ -25,9 +31,11 @@ export const ProjectsCardSection = () => {
           </React.Fragment>
         ))}
       </div>
-      
+
       <div className="flex gap-1 mb-24">
-        <span className="text-gray-400 text-base leading-6 font-normal">Se interessou?</span>
+        <span className="text-gray-400 text-base leading-6 font-normal">
+          Se interessou?
+        </span>
         <TextLink uri="/projects">
           <span>Ver Todos</span>
           <IoIosArrowRoundForward size={24} />
