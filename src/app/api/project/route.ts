@@ -1,17 +1,22 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../prisma/seed";
+import { PrismaClient } from "@prisma/client";
+
+export const db = new PrismaClient();
 
 export async function GET() {
-  const projects = await db.project.findMany({
-    include: {
-      projectSection: true,
-      techs: true
-    },
-  });
+  try {
+    const projects = await db.project.findMany({
+      include: {
+        techs: { select: { name: true } },
+      },
+    });
 
-  if (!projects) {
-    return NextResponse.json({ message: "Projects Not Found" }), { status: 500 };
+    return NextResponse.json(projects);
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return NextResponse.json(
+      { message: "Projects Not Found" },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json(projects);
 }

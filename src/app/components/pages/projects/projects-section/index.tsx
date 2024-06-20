@@ -1,13 +1,16 @@
-import { ProjectCard } from "@/app/components/project-card"
+import { ProjectCard } from "@/app/components/project-card";
+import { IProject } from "../../../../../../prisma/seed";
 
-export const ProjectSection = () => {
-    return (
-        <main className="grid grid-cols-1 md:grid-cols-3 md:gap-4 gap-2 mb-24">
-            {
-                Array.from({ length: 9 }).map((_, i) => {
-                    return <ProjectCard  key={i} />
-                })
-            }
-        </main>
-    )
+interface ProjectSectionProps {
+  projects: IProject[];
 }
+
+export const ProjectSection = ({ projects }: ProjectSectionProps) => {
+  return (
+    <main className="grid grid-cols-1 md:grid-cols-3 md:gap-4 gap-2 mb-24">
+      {projects.map((proj, i) => {
+        return <ProjectCard project={proj} key={i} />;
+      })}
+    </main>
+  );
+};
