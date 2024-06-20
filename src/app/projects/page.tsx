@@ -1,28 +1,27 @@
 import { Metadata } from "next";
 import { HeroSection } from "../components/pages/projects/hero-section";
 import { ProjectSection } from "../components/pages/projects/projects-section";
-import { IProject } from "../../../prisma/seed";
+import { IProject, IProjectFront } from "../../../prisma/seed";
+import axios from "axios";
 
 export const metadata: Metadata = {
   title: "Projetos",
 };
 
 export async function fetchProjectsDate() {
-  const projects = await fetch(process.env.URL + "/api/project");
+  const projects = await axios.get(process.env.URL + "/api/project");
 
-  if (!projects.ok) {
+  if (!projects) {
     throw new Error("Failed Fetch Projects");
   }
 
-  const response = await projects.json();
+  console.table(projects.data);
 
-  console.log(response);
-
-  return response;
+  return projects.data;
 }
 
 export default async function Projects() {
-  const projects: IProject[] = await fetchProjectsDate();
+  const projects: IProjectFront[] = await fetchProjectsDate();
 
   return (
     <main className="container flex flex-col gap-6 md:gap-24">

@@ -7,19 +7,11 @@ import Link from "next/link";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { RiGlobalLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa6";
-import { IProject } from "../../../../../../prisma/seed";
+import { IProjectFront } from "../../../../../../prisma/seed";
 
-const TECHS = [
-  "Next",
-  "NextAuth",
-  "Tailwindcss",
-  "Typescript",
-  "Prisma",
-  "ReactQuery",
-];
 
 interface HeroSectionProps {
-  project: IProject;
+  project: IProjectFront;
 }
 
 export const HeroSection = ({ project }: HeroSectionProps) => {

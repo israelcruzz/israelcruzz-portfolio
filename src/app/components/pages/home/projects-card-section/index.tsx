@@ -4,10 +4,10 @@ import { TextLink } from "@/app/components/text-link";
 import { TextSection } from "@/app/components/text-section";
 import React from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { IProject } from "../../../../../../prisma/seed";
+import { IProject, IProjectFront } from "../../../../../../prisma/seed";
 
 interface ProjectsCardSectionProps {
-  projects: IProject[];
+  projects: IProjectFront[];
 }
 
 export const ProjectsCardSection = ({ projects }: ProjectsCardSectionProps) => {
@@ -23,7 +23,7 @@ export const ProjectsCardSection = ({ projects }: ProjectsCardSectionProps) => {
               description={proj.description}
               imageUri={proj.thumbUri}
               techs={proj.techs && proj.techs.map((proj) => proj.name)}
-              uri={`/projects/${proj.title}`}
+              uri={`/projects/${proj.id}`}
             />
             <div className="mt-6 mb-6 md:mt-12 md:mb-12">
               <Divider />

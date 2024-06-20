@@ -1,8 +1,8 @@
 import { ProjectCard } from "@/app/components/project-card";
-import { IProject } from "../../../../../../prisma/seed";
+import { IProject, IProjectFront } from "../../../../../../prisma/seed";
 
 interface ProjectSectionProps {
-  projects: IProject[];
+  projects: IProjectFront[];
 }
 
 export const ProjectSection = ({ projects }: ProjectSectionProps) => {

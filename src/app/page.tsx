@@ -2,55 +2,52 @@ import { Metadata } from "next";
 import { HeroSection } from "./components/pages/home/hero-section";
 import { TechCardsSection } from "./components/pages/home/tech-cards-section";
 import { ProjectsCardSection } from "./components/pages/home/projects-card-section";
-import { IProject, ITech } from "../../prisma/seed";
+import { IProject, IProjectFront, ITech } from "../../prisma/seed";
+import axios from "axios";
 
 export const metadata: Metadata = {
   title: "Home",
 };
 
 const fetchTechsDate = async () => {
-  const techs = await fetch(process.env.URL + "/api/tech");
+  const techs = await axios.get(process.env.URL + "/api/tech");
 
-  if (!techs.ok) {
+  if (!techs) {
     throw new Error("Failed to fetch techs");
   }
 
-  const response = await techs.json();
-  return response;
+  console.table(techs.data);
+  return techs.data;
 };
 
 const fetchProminencesTechsDate = async () => {
-  const techs = await fetch(process.env.URL + "/api/tech/prominence");
+  const techs = await axios.get(process.env.URL + "/api/tech/prominence");
 
-  if (!techs.ok) {
+  if (!techs) {
     throw new Error("Failed to fetch techs");
   }
 
-  const response = await techs.json();
+  console.table(techs.data);
 
-  console.log(response);
-
-  return response;
+  return techs.data;
 };
 
 const fetchProjectsData = async () => {
-  const projects = await fetch(process.env.URL + "/api/project/prominence");
+  const projects = await axios.get(process.env.URL + "/api/project/prominence");
 
-  if (!projects.ok) {
+  if (!projects) {
     throw new Error("Failed to fetch projects");
   }
 
-  const response = await projects.json();
+  console.table(projects.data);
 
-  console.log(response);
-
-  return response;
+  return projects.data;
 };
 
 export default async function Home() {
   const techs = await fetchTechsDate();
   const prominencesTechs: ITech[] = await fetchProminencesTechsDate();
-  const projects: IProject[] = await fetchProjectsData();
+  const projects: IProjectFront[] = await fetchProjectsData();
 
   return (
     <main className="container flex flex-col gap-6 md:gap-24">

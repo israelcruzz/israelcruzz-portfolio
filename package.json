@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "npx tsx ./prisma/seed/index.ts"
+    "seed": "npx tsx ./prisma/seed/main.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.15.0",

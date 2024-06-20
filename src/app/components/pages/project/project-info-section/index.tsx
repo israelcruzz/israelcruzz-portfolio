@@ -1,11 +1,16 @@
 import { ProjectInfo } from "@/app/components/project-info";
+import { IProjectFront } from "../../../../../../prisma/seed";
 
-export const ProjectInfoSection = () => {
+interface ProjectInfoSection {
+  project: IProjectFront;
+}
+
+export const ProjectInfoSection = ({ project }: ProjectInfoSection) => {
   return (
     <div className="container flex flex-col gap-6">
-      {Array.from({ length: 4 }).map((_, i) => {
+      {project.projectSection.map((proj, i) => {
         return (
-          <ProjectInfo title="Login" imageUri="/images/example.png" key={i} />
+          <ProjectInfo title={proj.name} imageUri={proj.imageUri} key={i} />
         );
       })}
     </div>
