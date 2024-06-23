@@ -1,3 +1,5 @@
+"use client"
+
 import { TechCard } from "@/app/components/tech-card";
 import { TextSection } from "@/app/components/text-section";
 import { RiNextjsFill } from "react-icons/ri";
@@ -20,6 +22,10 @@ export const TechCardsSection = ({ techs }: TechCardsSectionProps) => {
               years={tech.exp}
               techIcon={RiNextjsFill}
               key={i.toString()}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.5 }}
             />
           );
         })}

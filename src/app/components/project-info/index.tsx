@@ -1,14 +1,17 @@
-import Image from "next/image";
+"use client";
 
-interface ProjectInfoProps {
+import Image from "next/image";
+import { motion, MotionProps } from "framer-motion";
+
+interface ProjectInfoProps extends MotionProps {
   title: string;
   imageUri: string;
 }
 
-export const ProjectInfo = ({ title, imageUri }: ProjectInfoProps) => {
+export const ProjectInfo = ({ title, imageUri, ...rest }: ProjectInfoProps) => {
   return (
-    <>
-      <h1 className="text-3xl font-medium text-gray-300 leading-9 text-center">
+    <motion.div {...rest}>
+      <h1 className="text-3xl font-medium text-gray-300 leading-9 text-center mb-4">
         {title}
       </h1>
       <Image
@@ -19,6 +22,6 @@ export const ProjectInfo = ({ title, imageUri }: ProjectInfoProps) => {
         quality={100}
         className="w-full object-cover rounded-lg"
       />
-    </>
+    </motion.div>
   );
 };

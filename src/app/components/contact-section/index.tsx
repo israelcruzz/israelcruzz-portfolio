@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import axios from "axios";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 export const ContactSection = () => {
   const formSchema = z.object({
@@ -26,7 +27,6 @@ export const ContactSection = () => {
 
   const handleSubmitForm = async (data: formType) => {
     try {
-
       const messageData = {
         embeds: [
           {
@@ -52,16 +52,23 @@ export const ContactSection = () => {
         ],
       };
 
-      await axios.post("https://discord.com/api/webhooks/1251980484460806242/E1k_P2cZ4IGPPb351n2BOWLl_EYyYbwB0xH-wohz0cDm-5-p8zOrQWaifg0_bKQ318hh", messageData);
+      await axios.post(
+        "https://discord.com/api/webhooks/1251980484460806242/E1k_P2cZ4IGPPb351n2BOWLl_EYyYbwB0xH-wohz0cDm-5-p8zOrQWaifg0_bKQ318hh",
+        messageData
+      );
       reset();
-      toast.success("Mensagem Enviada!")
+      toast.success("Mensagem Enviada!");
     } catch (error) {
-      toast.error("Erro ao enviar mensagem")
+      toast.error("Erro ao enviar mensagem");
     }
   };
 
   return (
-    <main
+    <motion.main
+      initial={{ opacity: 0, y: -100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -100 }}
+      transition={{ duration: 0.5 }}
       id="contact"
       className="bg-gray-800/40 xl:px-[510px] xl:py-[128px] p-6 flex flex-col justify-center items-center w-full"
     >
@@ -72,7 +79,11 @@ export const ContactSection = () => {
         <span>Entre em contato</span>
       </div>
 
-      <form
+      <motion.form
+        initial={{ opacity: 0, y: -100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
         className="w-full flex flex-col"
         onSubmit={handleSubmit(handleSubmitForm)}
       >
@@ -114,7 +125,7 @@ export const ContactSection = () => {
           <h1>Entre em contato</h1>
           <HiArrowNarrowRight size={24} color="#FFFFFF" />
         </Button>
-      </form>
-    </main>
+      </motion.form>
+    </motion.main>
   );
 };

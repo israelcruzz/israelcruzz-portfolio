@@ -6,6 +6,7 @@ import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { ITech } from "../../../../../../prisma/seed";
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   techs: ITech[];
@@ -39,7 +40,12 @@ export const HeroSection = ({ techs }: HeroSectionProps) => {
 
   return (
     <main className="grid grid-cols-1 mt-24 py-6 gap-6 md:grid-cols-2 items-center md:gap-[130px] md:py-12">
-      <section>
+      <motion.main
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ duration: 0.5 }}
+      >
         <span className="text-emerald-400 text-base font-normal mb-2">
           Desenvolvedor Fullstack
         </span>
@@ -54,7 +60,16 @@ export const HeroSection = ({ techs }: HeroSectionProps) => {
 
         <div className="flex gap-2 flex-wrap w-[324px] mt-4">
           {techs.map((tech, index) => {
-            return <TechBadge name={tech.name} key={index} />;
+            return (
+              <TechBadge
+                name={tech.name}
+                key={index}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              />
+            );
           })}
         </div>
 
@@ -77,9 +92,15 @@ export const HeroSection = ({ techs }: HeroSectionProps) => {
             );
           })}
         </div>
-      </section>
+      </motion.main>
 
-      <section className="flex-1">
+      <motion.section
+        className="flex-1"
+        initial={{ opacity: 0, y: 200, scale: 0.5 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: -200, scale: 0.5 }}
+        transition={{ duration: 0.5 }}
+      >
         <Image
           src="/images/israelcruzz-photo.jpg"
           quality={100}
@@ -88,7 +109,7 @@ export const HeroSection = ({ techs }: HeroSectionProps) => {
           alt="Photo Israel Cruz"
           className="w-full h-full object-cover rounded-lg"
         />
-      </section>
+      </motion.section>
     </main>
   );
 };

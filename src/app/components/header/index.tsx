@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,7 +9,12 @@ export const Header = () => {
   const path = usePathname();
 
   return (
-    <header className="w-full flex justify-between items-center container">
+    <motion.header
+      className="w-full flex justify-between items-center container"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Link href="/">
         <Image
           src="/images/israelcruzz-logo.png"
@@ -42,6 +48,6 @@ export const Header = () => {
           </h1>
         </Link>
       </section>
-    </header>
+    </motion.header>
   );
 };

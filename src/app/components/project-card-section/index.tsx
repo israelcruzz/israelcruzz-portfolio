@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { TechBadge } from "../tech-badge";
 import { TextLink } from "../text-link";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { MotionProps, motion } from "framer-motion";
 
-interface ProjectCardSectionProps {
+interface ProjectCardSectionProps extends MotionProps {
   title: string;
   description: string;
   techs: string[];
@@ -17,9 +20,10 @@ export const ProjectCardSection = ({
   techs,
   imageUri,
   uri,
+  ...rest
 }: ProjectCardSectionProps) => {
   return (
-    <main className="w-full flex flex-col gap-6 md:flex-row">
+    <motion.main className="w-full flex flex-col gap-6 md:flex-row" {...rest}>
       <section className="w-full md:w-1/2">
         <Image
           src={imageUri}
@@ -55,6 +59,6 @@ export const ProjectCardSection = ({
           </TextLink>
         </div>
       </section>
-    </main>
+    </motion.main>
   );
 };

@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Divider } from "../divider";
 import { IntroSection } from "../intro-section";
 
@@ -8,7 +11,12 @@ interface TextSectionProps {
 
 export const TextSection = ({ title, heading }: TextSectionProps) => {
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0, x: -100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="flex flex-col gap-3">
         <IntroSection title={title} />
         <h1 className="text-3xl leading-9 font-medium text-[#F9FAFB]">
@@ -19,7 +27,6 @@ export const TextSection = ({ title, heading }: TextSectionProps) => {
       <div className="mt-6 mb-12">
         <Divider />
       </div>
-      
-    </section>
+    </motion.section>
   );
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/app/components/button";
 import { IntroSection } from "@/app/components/intro-section";
 import { ProjectSection } from "@/app/components/project-section";
@@ -8,7 +10,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { RiGlobalLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa6";
 import { IProjectFront } from "../../../../../../prisma/seed";
-
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   project: IProjectFront;
@@ -24,7 +26,13 @@ export const HeroSection = ({ project }: HeroSectionProps) => {
         }}
       />
 
-      <section className="text-center">
+      <motion.section
+        initial={{ opacity: 0, y: -100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
+        className="text-center"
+      >
         <IntroSection title="projetos" />
         <h1 className="text-4xl font-medium leading-9 text-gray-300 mt-3">
           {project.title}
@@ -35,13 +43,28 @@ export const HeroSection = ({ project }: HeroSectionProps) => {
         <div className="flex justify-center items-center mt-7">
           <div className="w-full max-w-[330px] flex flex-wrap items-center justify-center gap-2">
             {project.techs.map((tech, i) => {
-              return <TechBadge name={tech.name} key={i} />;
+              return (
+                <TechBadge
+                  name={tech.name}
+                  key={i}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                />
+              );
             })}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <div className="flex items-center gap-2 justify-between">
+      <motion.div
+        className="flex items-center gap-2 justify-between"
+        initial={{ opacity: 0, y: -100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
+      >
         <Link href={project.repoUri}>
           <Button>
             <FaGithub size={24} />
@@ -55,12 +78,19 @@ export const HeroSection = ({ project }: HeroSectionProps) => {
             <span>Projeto Online</span>
           </Button>
         </Link>
-      </div>
+      </motion.div>
 
-      <TextLink uri="/projects">
-        <IoIosArrowRoundBack size={24} />
-        <span>Voltar para Projetos</span>
-      </TextLink>
+      <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
+      >
+        <TextLink uri="/projects">
+          <IoIosArrowRoundBack size={24} />
+          <span>Voltar para Projetos</span>
+        </TextLink>
+      </motion.div>
     </ProjectSection>
   );
 };
