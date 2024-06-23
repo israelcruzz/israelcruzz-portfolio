@@ -6,33 +6,33 @@ async function seed() {
   await db.tech.deleteMany();
 
   const technologies: ITech[] = [
-    { name: "Html", icon: "", exp: 3 },
-    { name: "Css", icon: "", exp: 3 },
-    { name: "Tailwind", icon: "", exp: 3 }, //10
-    { name: "Bootstrap", icon: "", exp: 3 },
-    { name: "Javascript", icon: "", exp: 3 },
-    { name: "Typescript", icon: "", exp: 1 }, //1
-    { name: "ReactJs", icon: "", exp: 3 },
-    { name: "NextJs", icon: "", exp: 1 }, //2
-    { name: "ReactNative", icon: "", exp: 1 }, //3
-    { name: "Expo", icon: "", exp: 1 }, //4
-    { name: "NodeJs", icon: "", exp: 1 }, //5
-    { name: "Bun", icon: "", exp: 1 },
-    { name: "Express", icon: "", exp: 1 },
-    { name: "Fastify", icon: "", exp: 1 }, //6
-    { name: "NestJs", icon: "", exp: 1 },
-    { name: "Elysia ", icon: "", exp: 1 },
-    { name: "Prisma", icon: "", exp: 1 }, //7
-    { name: "MongoDB", icon: "", exp: 1 },
-    { name: "Sql", icon: "", exp: 3 }, //8
-    { name: "Docker", icon: "", exp: 1 },
-    { name: "Vitest", icon: "", exp: 1 }, //9
-    { name: "Jest", icon: "", exp: 1 },
-    { name: "Kafka", icon: "", exp: 1 },
-    { name: "Figma", icon: "", exp: 3 }, //11
-    { name: "Git", icon: "", exp: 3 },
-    { name: "GitHub", icon: "", exp: 3 },
-    { name: "Php", icon: "", exp: 3 },
+    { name: "Html", icon: "FaHtml5", exp: 3 },
+    { name: "Css", icon: "FaCss3Alt", exp: 3 },
+    { name: "Tailwind", icon: "SiTailwindcss", exp: 3 },
+    { name: "Bootstrap", icon: "FaBootstrap", exp: 3 },
+    { name: "Javascript", icon: "FaJsSquare", exp: 3 },
+    { name: "Typescript", icon: "SiTypescript", exp: 1 },
+    { name: "ReactJs", icon: "FaReact", exp: 3 },
+    { name: "NextJs", icon: "SiNextdotjs", exp: 1 },
+    { name: "ReactNative", icon: "FaReact", exp: 1 },
+    { name: "Expo", icon: "SiExpo", exp: 1 },
+    { name: "NodeJs", icon: "FaNodeJs", exp: 1 },
+    { name: "Bun", icon: "SiBun", exp: 1 },
+    { name: "Express", icon: "SiExpress", exp: 1 },
+    { name: "Fastify", icon: "SiFastify", exp: 1 },
+    { name: "NestJs", icon: "SiNestjs", exp: 1 },
+    { name: "Elysia", icon: "SiElysia", exp: 1 },
+    { name: "Prisma", icon: "SiPrisma", exp: 1 },
+    { name: "MongoDB", icon: "SiMongodb", exp: 1 },
+    { name: "Sql", icon: "SiMysql", exp: 3 },
+    { name: "Docker", icon: "FaDocker", exp: 1 },
+    { name: "Vitest", icon: "SiVitest", exp: 1 },
+    { name: "Jest", icon: "SiJest", exp: 1 },
+    { name: "Kafka", icon: "SiApachekafka", exp: 1 },
+    { name: "Figma", icon: "FaFigma", exp: 3 },
+    { name: "Git", icon: "FaGitAlt", exp: 3 },
+    { name: "GitHub", icon: "FaGithub", exp: 3 },
+    { name: "Php", icon: "FaPhp", exp: 3 },
   ];
 
   const technologiesCreated: ITech[] = [];
