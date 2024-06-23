@@ -4,20 +4,23 @@ import { db } from "../../../../../prisma/seed";
 export async function GET() {
   const filterProjectsPerName: string[] = ["DuoFinders", "Ai Train App"];
 
-  const projects = await db.project.findMany({
-    where: {
-      title: {
-        in: filterProjectsPerName,
+  try {
+    const projects = await db.project.findMany({
+      where: {
+        title: { in: filterProjectsPerName }
       },
-    },
-    include: {
-      techs: { select: { name: true } },
-    },
-  });
+      include: {
+        techs: { select: { name: true } }
+      }
+    });
 
-  if (!projects.length) {
-    return NextResponse.json({ message: "Project Not Found" }), { status: 500 };
+    if (!projects.length) {
+      return NextResponse.json({ message: "Project Not Found" }, { status: 500 });
+    }
+
+    return NextResponse.json(projects);
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }
-
-  return NextResponse.json(projects);
 }

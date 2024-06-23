@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { HeroSection } from "../components/pages/projects/hero-section";
 import { ProjectSection } from "../components/pages/projects/projects-section";
-import { IProject, IProjectFront } from "../../../prisma/seed";
+import { IProjectFront } from "../../../prisma/seed";
 import axios from "axios";
 
 export const metadata: Metadata = {
@@ -9,15 +9,20 @@ export const metadata: Metadata = {
 };
 
 export async function fetchProjectsDate() {
-  const projects = await axios.get(process.env.URL + "/api/project");
+  try {
+    const projects = await axios.get(process.env.URL + "/api/project");
 
-  if (!projects) {
-    throw new Error("Failed Fetch Projects");
+    if (!projects) {
+      throw new Error("Failed Fetch Projects");
+    }
+
+    console.table(projects.data);
+
+    return projects.data;
+  } catch (error) {
+    console.log(error)
+    return;
   }
-
-  console.table(projects.data);
-
-  return projects.data;
 }
 
 export default async function Projects() {
