@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     console.error("Error fetching Techs:", error);
     return NextResponse.json(
-      { message: "Internal Server Error" },
+      { message: "Internal Server Error", error: error },
       { status: 500 }
     );
   }
