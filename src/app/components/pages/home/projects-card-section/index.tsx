@@ -6,7 +6,7 @@ import { TextLink } from "@/app/components/text-link";
 import { TextSection } from "@/app/components/text-section";
 import React from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { IProjectFront } from "../../../../../../prisma/seed";
+import { IProjectFront } from "../../../../../../prisma";
 import { motion } from "framer-motion";
 
 interface ProjectsCardSectionProps {

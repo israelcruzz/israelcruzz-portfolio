@@ -1,4 +1,4 @@
-import { IProject, IProjectSection, ITech, db } from ".";
+import { IProject, IProjectSection, ITech, db } from "./index";
 
 async function seed() {
   await db.projectSection.deleteMany();

@@ -5,7 +5,7 @@ import { TechBadge } from "@/app/components/tech-badge";
 import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
-import { ITech } from "../../../../../../prisma/seed";
+import { ITech } from "../../../../../../prisma";
 import { motion } from "framer-motion";
 
 interface HeroSectionProps {

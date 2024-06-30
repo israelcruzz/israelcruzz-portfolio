@@ -3,7 +3,7 @@
 import { TechCard } from "@/app/components/tech-card";
 import { TextSection } from "@/app/components/text-section";
 import { RiNextjsFill } from "react-icons/ri";
-import { ITech } from "../../../../../../prisma/seed";
+import { ITech } from "../../../../../../prisma";
 import { getIconComponent } from "@/utils/get-icon-component";
 
 interface TechCardsSectionProps {

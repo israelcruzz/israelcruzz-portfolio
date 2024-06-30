@@ -1,7 +1,7 @@
 "use client";
 
 import { ProjectCard } from "@/app/components/project-card";
-import { IProjectFront } from "../../../../../../prisma/seed";
+import { IProjectFront } from "../../../../../../prisma";
 
 interface ProjectSectionProps {
   projects: IProjectFront[];

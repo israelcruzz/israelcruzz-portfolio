@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "../../../../../prisma/seed/index";
+import { db } from "../../../../../prisma/index";
 
 interface GetIdParams {
   params: {

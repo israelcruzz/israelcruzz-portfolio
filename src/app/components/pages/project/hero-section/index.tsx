@@ -9,7 +9,7 @@ import Link from "next/link";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { RiGlobalLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa6";
-import { IProjectFront } from "../../../../../../prisma/seed";
+import { IProjectFront } from "../../../../../../prisma";
 import { motion } from "framer-motion";
 
 interface HeroSectionProps {

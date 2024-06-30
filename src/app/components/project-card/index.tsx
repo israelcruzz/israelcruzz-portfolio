@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { IProjectFront } from "../../../../prisma/seed";
+import { IProjectFront } from "../../../../prisma";
 import { motion, MotionProps } from "framer-motion";
 
 interface ProjectCardProps extends MotionProps {

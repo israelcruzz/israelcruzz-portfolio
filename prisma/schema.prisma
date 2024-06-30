@@ -6,15 +6,16 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Tech {
-  id   String @id @default(uuid())
-  name String
-  icon String
-  exp  Int
+  id        String   @id @default(uuid())
+  name      String
+  icon      String
+  exp       Int
+  createdAt DateTime @default(now())
 
   projects Project[]
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { ProjectInfo } from "@/app/components/project-info";
-import { IProjectFront } from "../../../../../../prisma/seed";
+import { IProjectFront } from "../../../../../../prisma";
 
 interface ProjectInfoSection {
   project: IProjectFront;

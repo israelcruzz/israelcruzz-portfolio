@@ -1,7 +1,5 @@
-import axios from "axios";
-import { IProjectFront } from "../../../../prisma/seed";
-import { HeroSection } from "../../components/pages/project/hero-section";
-import { ProjectInfoSection } from "../../components/pages/project/project-info-section";
+import ProjectWithDate from "@/app/components/pages/project/project-with-date/project-with-date";
+import { db } from "../../../../prisma";
 import { Metadata } from "next";
 
 interface ProjectRequest {
@@ -10,37 +8,18 @@ interface ProjectRequest {
   };
 }
 
-export async function generateMetadata({ params: { id } }: ProjectRequest): Promise<Metadata> {
-  const projectDate: IProjectFront = await fetchDateProject(id);
+export async function generateMetadata({
+  params: { id },
+}: ProjectRequest): Promise<Metadata> {
+  const project = await db.project.findUnique({ where: {
+    id
+  } })
 
   return {
-    title: projectDate.title,
+    title: project?.title,
   };
 }
 
-const fetchDateProject = async (id: string) => {
-  try {
-    const date = await axios.get(process.env.URL + `/api/project/${id}`);
-
-    if (!date) {
-      throw new Error("Failed Request for Project");
-    }
-
-    console.table(date.data);
-
-    return date.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export default async function Project({ params: { id } }: ProjectRequest) {
-  const projectDate: IProjectFront = await fetchDateProject(id);
-
-  return (
-    <main className="flex flex-col gap-6 md:gap-24">
-      <HeroSection project={projectDate} />
-      <ProjectInfoSection project={projectDate} />
-    </main>
-  );
+export default function Project({ params: { id } }: ProjectRequest) {
+  return <ProjectWithDate id={id} />;
 }
