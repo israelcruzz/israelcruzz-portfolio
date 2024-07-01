@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "npx prisma db seed",
-    "postinstall": "prisma generate"
+    "prepare": "prisma generate"
   },
   "prisma": {
     "seed": "npx tsx ./prisma/seed.ts"
