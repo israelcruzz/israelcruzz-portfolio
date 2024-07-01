@@ -13,7 +13,7 @@ export async function GET() {
   } catch (error) {
     console.error("Error fetching projects:", error);
     return NextResponse.json(
-      { message: "Projects Not Found" },
+      { message: "Projects Not Found", error: error },
       { status: 500 }
     );
   }
